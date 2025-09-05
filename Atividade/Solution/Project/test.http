@@ -1,0 +1,16 @@
+### Requsição da Raiz
+GET http://localhost:5166/
+
+### Listar produtos
+GET http://localhost:5166/api/produto/listar
+
+### Cadastrar produtos
+GET http://localhost:5166/api/produto/cadastrar
+Content-Type: application/json
+[
+{
+    "nome": "Caixa de som",
+    "quantidade": 20,
+    "preco": 200,
+}
+]
