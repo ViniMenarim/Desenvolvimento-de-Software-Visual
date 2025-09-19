@@ -1,15 +1,31 @@
-### Requsição da Raiz
+### Requisição para a raiz
 GET http://localhost:5166/
 
-### Listar produtos
+### Listar todos os produtos
 GET http://localhost:5166/api/produto/listar
 
-### Cadastrar produtos
-GET http://localhost:5166/api/produto/cadastrar
+### Buscar produto por nome
+GET http://localhost:5166/api/produto/buscar/Notebook
+
+### Cadastrar o produto
+POST http://localhost:5166/api/produto/cadastrar
 Content-Type: application/json
 
 {
-    "nome": "Caixa de som",
-    "quantidade": 20,
-    "preco": 200,
+    "nome" : "Geladeria",
+    "quantidade" : 5,
+    "preco" : 3999.99
 }
+
+### Atualizar o produto
+PUT http://localhost:5166/api/produto/atualizar/Notebook
+Content-Type: application/json
+
+{
+    "nome" : "Notebook",
+    "quantidade" : 3,
+    "preco" : 4999.99
+}
+
+### Remover o produto
+DELETE  http://localhost:5166/api/produto/remover/Notebook
