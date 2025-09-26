@@ -1,18 +1,10 @@
-using API.Models;
+using Project.Models;
 using Microsoft.AspNetCore.Mvc;
 
 Console.Clear();
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<AppDataContext>();
 var app = builder.Build();
-
-List<Produto> produtos = new List<Produto>
-{
-    new Produto { Nome = "Notebook", Quantidade = 10, Preco = 3499.99 },
-    new Produto { Nome = "Smartphone", Quantidade = 25, Preco = 2199.99 },
-    new Produto { Nome = "Fone de Ouvido", Quantidade = 50, Preco = 199.90 },
-    new Produto { Nome = "Monitor", Quantidade = 15, Preco = 899.99 },
-    new Produto { Nome = "Teclado Mecânico", Quantidade = 20, Preco = 349.99 }
-};
 
 app.MapGet("/", () => "API de Produtos");
 

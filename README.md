@@ -1,0 +1,1 @@
+Link do material de aula: https://careful-bite-81a.notion.site/Desenvolvimento-de-Software-Visual-1a43286c79b580ecb6cefcdaf40ca39e
