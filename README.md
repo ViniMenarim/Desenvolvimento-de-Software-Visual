@@ -1,1 +1,2 @@
-Link do material de aula: https://careful-bite-81a.notion.site/Desenvolvimento-de-Software-Visual-1a43286c79b580ecb6cefcdaf40ca39e
+# 2025-desenvolvimento-software-visual-sexta
+Repositório com os projetos da disciplina de Desenvolvimento de Software Visual de sexta-feira de manhã.
