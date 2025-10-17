@@ -1,11 +1,14 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 Console.Clear();
 var builder = WebApplication.CreateBuilder(args);
 
 //Adicionar o serviço de banco de dados na aplicação
 builder.Services.AddDbContext<AppDataContext>();
+
+builder.Services.AddCors(options => options.AddPolicy("Acesso Total", configs => configs.AllowAnyOrigin() .AllowAnyHeader() .AllowAnyMethod()));
 
 var app = builder.Build();
 
@@ -98,7 +101,7 @@ app.MapDelete("/api/produto/remover/{id}", ([FromRoute] string id,
     if (resultado is null)
     {
         return Results.NotFound("Produto não encontrado");
-    }   
+    }
     ctx.Produtos.Remove(resultado);
     ctx.SaveChanges();
     return Results.Ok(resultado);
@@ -108,7 +111,7 @@ app.MapDelete("/api/produto/remover/{id}", ([FromRoute] string id,
 app.MapPatch("/api/produto/alterar/{id}", ([FromRoute] string id,
     [FromBody] Produto produtoAlterado,
     [FromServices] AppDataContext ctx) =>
-{   
+{
     Produto? resultado = ctx.Produtos.Find(id);
     if (resultado is null)
     {
@@ -121,6 +124,8 @@ app.MapPatch("/api/produto/alterar/{id}", ([FromRoute] string id,
     ctx.SaveChanges();
     return Results.Ok(resultado);
 });
+
+app.UseCors("Acesso Total");
 
 app.Run();
 
