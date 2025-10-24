@@ -1,11 +1,12 @@
 import React from "react";
-import ListarProdutos from "./ListarProdutos";
+import ListarProdutos from "./Components/Pages/Produtos/ListarProdutos";
+import CadastrarProdutos from "./Components/Pages/Produtos/CadastrarProduto";
 
 function App() {
   return (
     <div id="listar_produtos">
-      <h1>Oi</h1>
       <ListarProdutos></ListarProdutos>
+      <CadastrarProdutos></CadastrarProdutos>
     </div>
   );
 }
