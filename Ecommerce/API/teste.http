@@ -14,8 +14,8 @@ Content-Type: application/json
 {
     "nome" : "Monitor",
     "descricao" : "Eletrônico",
-    "quantidade" : 123,
-    "preco" : 85.5
+    "quantidade" : 120,
+    "preco" : 89.9
 }
 
 ### Remover produto por id
@@ -26,7 +26,7 @@ PATCH http://localhost:5011/api/produto/alterar/d997041f-c5b7-402b-be27-d3385469
 Content-Type: application/json
 
 {
-    "nome" : "Mouse ALTERADO",
-    "quantidade" : 123,
-    "preco" : 85.5
+    "nome" : "Mouse FODA!!!",
+    "quantidade" : 90,
+    "preco" : 99.9
 }

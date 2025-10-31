@@ -5,16 +5,22 @@ function ListarProdutos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
 
   useEffect(() => {
-    console.log("O componente foi carregado!");
     buscarProdutosAPI();
   }, []);
 
   async function buscarProdutosAPI() {
-    const resposta = await fetch("http://localhost:5011/api/produto/listar");
+    try {
+      const resposta = await fetch("http://localhost:5011/api/produto/listar");
 
-    const dados = await resposta.json();
-    setProdutos(dados);
-    console.table(dados);
+      if (!resposta.ok) {
+        throw new Error("Erro na requisição: " + resposta.statusText);
+      }
+
+      const dados = await resposta.json();
+      setProdutos(dados);
+    } catch (error) {
+      console.log("Erro na requisição: " + error);
+    }
   }
 
   return (
@@ -23,9 +29,10 @@ function ListarProdutos() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Nome</th>
             <th>Descrição</th>
+            <th>Quantidade</th>
             <th>Preço</th>
             <th>Criado Em</th>
           </tr>
@@ -36,6 +43,7 @@ function ListarProdutos() {
               <td>{produto.id}</td>
               <td>{produto.nome}</td>
               <td>{produto.descricao}</td>
+              <td>{produto.quantidade}</td>
               <td>{produto.preco}</td>
               <td>{produto.criadoEm}</td>
             </tr>
