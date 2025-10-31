@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import Produto from "../../../Models/Produto";
+import axios from "axios";
 
 function ListarProdutos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
 
   useEffect(() => {
-    buscarProdutosAPI();
+    buscarProdutos();
   }, []);
 
-  async function buscarProdutosAPI() {
+  async function buscarProdutos() {
     try {
-      const resposta = await fetch("http://localhost:5011/api/produto/listar");
-
-      if (!resposta.ok) {
-        throw new Error("Erro na requisição: " + resposta.statusText);
-      }
-
-      const dados = await resposta.json();
-      setProdutos(dados);
+      const resposta = await axios.get(
+        "http://localhost:5011/api/produto/listar"
+      );
+      setProdutos(resposta.data);
     } catch (error) {
       console.log("Erro na requisição: " + error);
     }

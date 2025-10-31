@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Produto from "../../../Models/Produto";
-import { error } from "console";
+import axios from "axios";
 
 function CadastrarProduto() {
   const [nome, setNome] = useState("");
@@ -16,25 +16,16 @@ function CadastrarProduto() {
   async function submeterProduto() {
     try {
       const produto: Produto = {
-        nome: nome,
-        descricao: descricao,
-        preco: preco,
-        quantidade: quantidade,
+        nome,
+        descricao,
+        preco,
+        quantidade,
       };
 
-      const resposta = await fetch(
+      const resposta = await axios.post(
         "http://localhost:5011/api/produto/cadastrar",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(produto),
-        }
+        produto
       );
-      if (!resposta.ok) {
-        throw new Error("Erro no cadastro:" + resposta.statusText);
-      }
     } catch (error) {
       console.log("Erro na requisição: " + error);
     }
