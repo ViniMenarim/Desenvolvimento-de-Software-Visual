@@ -16,12 +16,18 @@ function CadastrarProduto() {
   async function submeterProdutoAPI() {
     try {
       const produto: Produto = {
-        nome, descricao, preco, quantidade,
+        nome,
+        descricao,
+        preco,
+        quantidade,
       };
-      const resposta = await axios.post("http://localhost:5011/api/produto/cadastrar", produto);            
+      const resposta = await axios.post(
+        "http://localhost:5011/api/produto/cadastrar",
+        produto
+      );
       console.log(await resposta.data);
-    } catch (error : any) {
-      if(error.status === 409){
+    } catch (error: any) {
+      if (error.status === 409) {
         console.log("Esse produto já foi cadastrado!");
       }
     }
@@ -33,7 +39,7 @@ function CadastrarProduto() {
       <form onSubmit={enviarProduto}>
         <div>
           <label>Nome:</label>
-          <input onChange={(e : any) => setNome(e.target.value)} type="text" />
+          <input onChange={(e: any) => setNome(e.target.value)} type="text" />
         </div>
         <div>
           <label>Descrição:</label>

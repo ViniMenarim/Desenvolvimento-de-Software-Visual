@@ -2,6 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Models;
+
 public class AppDataContext : DbContext
 {
     public DbSet<Produto> Produtos { get; set; }
@@ -11,5 +12,4 @@ public class AppDataContext : DbContext
     {
         optionsBuilder.UseSqlite("Data Source=Ecommerce.db");
     }
-
 }

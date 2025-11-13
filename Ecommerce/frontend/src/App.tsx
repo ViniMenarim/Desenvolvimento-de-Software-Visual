@@ -19,12 +19,10 @@ function App() {
           </ul>
         </nav>
         <Routes>
-          <Route path="/" element={<ListarProdutos/>} />
-          <Route path="/produto/cadastrar" element={<CadastrarProduto/>} />
+          <Route path="/" element={<ListarProdutos />} />
+          <Route path="/produto/cadastrar" element={<CadastrarProduto />} />
         </Routes>
-        <footer>
-          Rodapé da aplicação
-        </footer>
+        <footer>Rodapé da aplicação</footer>
       </BrowserRouter>
     </div>
   );

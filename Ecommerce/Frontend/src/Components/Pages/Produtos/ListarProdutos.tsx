@@ -21,9 +21,11 @@ function ListarProdutos() {
     }
   }
 
-  async function deletarProduto(id : string){    
+  async function deletarProduto(id: string) {
     try {
-      const resposta = await axios.delete(`http://localhost:5011/api/produto/remover/${id}`);
+      const resposta = await axios.delete(
+        `http://localhost:5011/api/produto/remover/${id}`
+      );
 
       buscarProdutosAPI();
     } catch (error) {
@@ -56,7 +58,9 @@ function ListarProdutos() {
               <td>{produto.preco}</td>
               <td>{produto.criadoEm}</td>
               <td>
-                <button onClick={() => deletarProduto(produto.id!)}>Deletar</button>
+                <button onClick={() => deletarProduto(produto.id!)}>
+                  Deletar
+                </button>
               </td>
             </tr>
           ))}
