@@ -1,7 +1,7 @@
 🚀 Como Rodar o Projeto
 Este projeto é dividido em duas partes: API (Servidor) e Frontend (Interface). Você precisará rodar ambos simultaneamente em terminais separados.
 
-1. Configurando e Rodando a API (Backend)
+Configurando e Rodando a API (Backend)
 Abra um terminal e navegue até a pasta da API:
 
 cd Ecommerce/API
@@ -16,7 +16,7 @@ Inicie o servidor:
 dotnet watch run
 Nota: O servidor iniciará (geralmente em http://localhost:5011 ou porta similar configurada no launchSettings.json).
 
-2. Configurando e Rodando o Frontend
+Configurando e Rodando o Frontend
 Abra outro terminal e navegue até a pasta do Frontend:
 
 cd Ecommerce/Frontend
@@ -40,7 +40,7 @@ Se a porta da sua API mudar, vá nos arquivos Frontend/src/Components/Pages/Prod
 🛠️ Guia de Desenvolvimento: Como fazer alterações
 Se você deseja adicionar uma nova funcionalidade ou alterar algo existente, siga este fluxo de trabalho recomendado:
 
-1. Alterando o Banco de Dados (Backend)
+Alterando o Banco de Dados (Backend)
 Se você precisa adicionar um novo campo (ex: Categoria em Produto):
 
 Vá em API/Models/Produto.cs e adicione a propriedade:
@@ -52,12 +52,12 @@ dotnet ef migrations add AdicionarCategoriaProduto
 Aplique a migração:
 
 dotnet ef database update
-2. Atualizando a Lógica (Backend)
+Atualizando a Lógica (Backend)
 Vá em Program.cs.
 
 Nos endpoints (app.MapPost, app.MapPatch), certifique-se de que o novo campo está sendo tratado ou atualizado conforme necessário.
 
-3. Atualizando a Interface (Frontend)
+Atualizando a Interface (Frontend)
 Modelo: Atualize o arquivo de tipagem em Frontend/src/Models/Produto.ts para incluir o novo campo.
 
 Cadastro: Em CadastrarProduto.tsx:
