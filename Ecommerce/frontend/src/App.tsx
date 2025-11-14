@@ -1,6 +1,6 @@
 import React from "react";
-import ListarProdutos from "./Components/Pages/Produtos/ListarProdutos";
-import CadastrarProduto from "./Components/Pages/Produtos/CadastrarProduto";
+import ListarProdutos from "./Components/ListarProdutos";
+import CadastrarProduto from "./Components/CadastrarProduto";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
 

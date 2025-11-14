@@ -1,101 +1,123 @@
-🚀 Como Rodar o Projeto
-Este projeto é dividido em duas partes: API (Servidor) e Frontend (Interface). Você precisará rodar ambos simultaneamente em terminais separados.
+# 🛒 Projeto E-commerce Fullstack
 
-Configurando e Rodando a API (Backend)
-Abra um terminal e navegue até a pasta da API:
+Este é um sistema de gerenciamento de produtos desenvolvido para fins de estudo, utilizando uma arquitetura moderna separada em **Backend (API)** e **Frontend (SPA)**.
 
-cd Ecommerce/API
-Restaure os pacotes do .NET:
+## 🛠️ Tecnologias Utilizadas
 
-dotnet restore
-(Opcional) Se o banco de dados Ecommerce.db não existir, crie-o executando as migrações:
+**Backend:**
 
-dotnet ef database update
-Inicie o servidor:
+- **C# .NET 6+** (Minimal APIs)
+- **Entity Framework Core** (ORM)
+- **SQLite** (Banco de Dados)
+- **Swagger** (Opcional, para documentação)
 
-dotnet watch run
-Nota: O servidor iniciará (geralmente em http://localhost:5011 ou porta similar configurada no launchSettings.json).
+**Frontend:**
 
-Configurando e Rodando o Frontend
-Abra outro terminal e navegue até a pasta do Frontend:
+- **React.js** (Biblioteca de interface)
+- **TypeScript** (Tipagem estática)
+- **Axios** (Requisições HTTP)
+- **React Router Dom** (Navegação)
 
-cd Ecommerce/Frontend
-Instale as dependências do Node:
+---
 
-npm install
-Inicie a aplicação React:
+## 📋 Pré-requisitos
 
-npm start
-O navegador deve abrir automaticamente em http://localhost:3000.
+Certifique-se de ter instalado em sua máquina:
 
-⚙️ Configuração
-Banco de Dados
-O projeto utiliza SQLite. A string de conexão fica localizada no arquivo API/appsettings.json. O arquivo do banco (Ecommerce.db) será criado na raiz da pasta API.
+1.  **[.NET SDK](https://dotnet.microsoft.com/download)** (Versão 6.0 ou superior).
+2.  **[Node.js](https://nodejs.org/)** (Versão 16 ou superior) e **npm**.
+3.  **[VS Code](https://code.visualstudio.com/)** ou editor de sua preferência.
 
-Endereços da API (CORS)
-O Frontend se comunica com o Backend através da URL definida nos arquivos .tsx (atualmente http://localhost:5011).
+---
 
-Se a porta da sua API mudar, vá nos arquivos Frontend/src/Components/Pages/Produtos/ e atualize a URL no axios.
+## 🚀 Instalação e Execução
 
-🛠️ Guia de Desenvolvimento: Como fazer alterações
-Se você deseja adicionar uma nova funcionalidade ou alterar algo existente, siga este fluxo de trabalho recomendado:
+O projeto roda em dois terminais separados: um para a API e outro para o React.
 
-Alterando o Banco de Dados (Backend)
-Se você precisa adicionar um novo campo (ex: Categoria em Produto):
+### Passo 1: Configurar o Backend (API)
 
-Vá em API/Models/Produto.cs e adicione a propriedade:
+1.  Abra o terminal na pasta da API:
 
-public string? Categoria { get; set; }
-Crie uma nova migração para atualizar o banco:
+    ```bash
+    cd Ecommerce/API
+    ```
 
-dotnet ef migrations add AdicionarCategoriaProduto
-Aplique a migração:
+2.  Instale as dependências e ferramentas do Entity Framework:
 
-dotnet ef database update
-Atualizando a Lógica (Backend)
-Vá em Program.cs.
+    ```bash
+    dotnet restore
+    dotnet tool install --global dotnet-ef
+    ```
 
-Nos endpoints (app.MapPost, app.MapPatch), certifique-se de que o novo campo está sendo tratado ou atualizado conforme necessário.
+3.  Gere o banco de dados SQLite (`Ecommerce.db`):
 
-Atualizando a Interface (Frontend)
-Modelo: Atualize o arquivo de tipagem em Frontend/src/Models/Produto.ts para incluir o novo campo.
+    ```bash
+    dotnet ef database update
+    ```
 
-Cadastro: Em CadastrarProduto.tsx:
+4.  Inicie o servidor:
+    ```bash
+    dotnet watch run
+    ```
+    > 🟢 **Sucesso:** A API estará rodando em `http://localhost:5011` (ou porta definida em `launchSettings.json`).
 
-Crie um novo estado: const [categoria, setCategoria] = useState("");
+### Passo 2: Configurar o Frontend (React)
 
-Adicione um <input> no formulário.
+1.  Abra um **novo terminal** na pasta do Frontend:
 
-Inclua o campo no objeto enviado ao axios.
+    ```bash
+    cd Ecommerce/Frontend
+    ```
 
-Listagem: Em ListarProdutos.tsx:
+2.  Instale as dependências do `package.json`:
 
-Adicione uma nova coluna <th>Categoria</th> no cabeçalho da tabela.
+    ```bash
+    npm install
+    ```
 
-Adicione uma nova célula <td>{produto.categoria}</td> no corpo da tabela.
+3.  Inicie a aplicação:
+    ```bash
+    npm start
+    ```
+    > 🔵 **Sucesso:** O navegador abrirá automaticamente em `http://localhost:3000`.
 
-📂 Estrutura de Pastas
-Ecommerce/
+---
 
-API/ (Backend .NET)
+## 🔌 Endpoints da API
 
-Models/ (Classes que representam as tabelas do banco)
+Aqui estão as rotas disponíveis no Backend (`Program.cs`):
 
-Migrations/ (Histórico de alterações do banco de dados)
+| Método   | Rota                        | Descrição                                   |
+| :------- | :-------------------------- | :------------------------------------------ |
+| `GET`    | `/`                         | Teste de funcionamento da API.              |
+| `GET`    | `/api/produto/listar`       | Retorna a lista de todos os produtos.       |
+| `GET`    | `/api/produto/buscar/{id}`  | Busca um produto específico pelo ID (UUID). |
+| `POST`   | `/api/produto/cadastrar`    | Cria um novo produto (JSON no corpo).       |
+| `PATCH`  | `/api/produto/alterar/{id}` | Atualiza dados parciais de um produto.      |
+| `DELETE` | `/api/produto/remover/{id}` | Remove um produto do banco.                 |
 
-Program.cs (Arquivo principal com rotas e configurações)
+---
 
-Frontend/ (Aplicação React)
+## 💻 Guia de Desenvolvimento
 
-src/
+Como adicionar novas funcionalidades ao projeto:
 
-Components/Pages/ (Telas do sistema)
+### 1. Modificando o Banco de Dados
 
-Models/ (Tipagem TypeScript espelhando o C#)
+Se você alterar qualquer modelo na pasta `API/Models/`:
 
-App.tsx (Configuração de rotas)
+1.  Edite a classe (ex: `Produto.cs`).
+2.  Crie uma migração:
+    ```bash
+    dotnet ef migrations add NomeDaMudanca
+    ```
+3.  Atualize o banco:
+    ```bash
+    dotnet ef database update
+    ```
 
-🆘 Solução de Problemas Comuns
-Erro de CORS: Se o navegador bloquear a requisição, verifique se a API está rodando e se a URL no axios (Frontend) é exatamente a mesma que aparece no terminal da API.
+## 🐛 Solução de Problemas
 
-Porta Ocupada: Se a porta 5011 ou 3000 estiver em uso, os terminais avisarão. Você pode alterar as portas nos arquivos de configuração (launchSettings.json na API ou package.json no React).
+- **Erro de CORS:** Verifique se a URL no arquivo `Frontend/.../ListarProdutos.tsx` e `CadastrarProduto.tsx` é exatamente a mesma onde a API está rodando (ex: `http://localhost:5011`).
+- **Banco de dados não encontrado:** Certifique-se de ter rodado `dotnet ef database update` dentro da pasta `API`.
+- **Erro de Porta:** Se a porta 5011 ou 3000 estiver ocupada, altere no `launchSettings.json` (API) ou `package.json` (Frontend).
