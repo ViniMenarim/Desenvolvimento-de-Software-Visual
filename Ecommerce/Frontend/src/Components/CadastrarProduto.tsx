@@ -28,13 +28,13 @@ function CadastrarProduto() {
         preco,
         quantidade,
       };
-      
+
       // Envia os dados via POST para a sua API
       const resposta = await axios.post(
         "http://localhost:5011/api/produto/cadastrar",
         produto
       );
-      
+
       console.log(await resposta.data);
       // DICA: Aqui seria um bom lugar para limpar os campos ou mostrar um alerta de "Sucesso"
     } catch (error: any) {

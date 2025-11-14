@@ -1,4 +1,5 @@
 import React from "react";
+import "./Components/App.css";
 import ListarProdutos from "./Components/ListarProdutos";
 import CadastrarProduto from "./Components/CadastrarProduto";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -20,7 +21,7 @@ function App() {
             </li>
           </ul>
         </nav>
-        
+
         {/* Routes define qual componente aparece baseado na URL do navegador */}
         <Routes>
           {/* Se a URL for "/", mostra a lista */}
@@ -28,8 +29,6 @@ function App() {
           {/* Se a URL for "/produto/cadastrar", mostra o formulário */}
           <Route path="/produto/cadastrar" element={<CadastrarProduto />} />
         </Routes>
-        
-        <footer>Rodapé da aplicação</footer>
       </BrowserRouter>
     </div>
   );

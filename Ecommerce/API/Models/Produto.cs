@@ -9,7 +9,7 @@ public class Produto
         // Gera um hash único universal (ex: "a1b2-c3d4...") para o ID.
         // Útil se você planeja sincronizar dados entre bancos diferentes.
         Id = Guid.NewGuid().ToString();
-        
+
         // Grava o momento exato da criação
         CriadoEm = DateTime.Now;
     }

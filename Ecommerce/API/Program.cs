@@ -90,7 +90,7 @@ app.MapDelete("/api/produto/remover/{id}", ([FromRoute] string id,
     {
         return Results.NotFound("Produto não encontrado");
     }
-    
+
     // Remove da memória e salva a alteração no banco
     ctx.Produtos.Remove(resultado);
     ctx.SaveChanges();
