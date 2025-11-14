@@ -4,22 +4,14 @@ Este projeto é dividido em duas partes: API (Servidor) e Frontend (Interface). 
 1. Configurando e Rodando a API (Backend)
 Abra um terminal e navegue até a pasta da API:
 
-Bash
-
 cd Ecommerce/API
 Restaure os pacotes do .NET:
-
-Bash
 
 dotnet restore
 (Opcional) Se o banco de dados Ecommerce.db não existir, crie-o executando as migrações:
 
-Bash
-
 dotnet ef database update
 Inicie o servidor:
-
-Bash
 
 dotnet watch run
 Nota: O servidor iniciará (geralmente em http://localhost:5011 ou porta similar configurada no launchSettings.json).
@@ -27,17 +19,11 @@ Nota: O servidor iniciará (geralmente em http://localhost:5011 ou porta similar
 2. Configurando e Rodando o Frontend
 Abra outro terminal e navegue até a pasta do Frontend:
 
-Bash
-
 cd Ecommerce/Frontend
 Instale as dependências do Node:
 
-Bash
-
 npm install
 Inicie a aplicação React:
-
-Bash
 
 npm start
 O navegador deve abrir automaticamente em http://localhost:3000.
@@ -59,17 +45,11 @@ Se você precisa adicionar um novo campo (ex: Categoria em Produto):
 
 Vá em API/Models/Produto.cs e adicione a propriedade:
 
-C#
-
 public string? Categoria { get; set; }
 Crie uma nova migração para atualizar o banco:
 
-Bash
-
 dotnet ef migrations add AdicionarCategoriaProduto
 Aplique a migração:
-
-Bash
 
 dotnet ef database update
 2. Atualizando a Lógica (Backend)
