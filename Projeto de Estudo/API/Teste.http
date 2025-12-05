@@ -1,0 +1,37 @@
+### Configuração da Base URL (Verifique a porta que seu projeto abriu, ex: 5000, 5273, etc)
+@base_url = http://localhost:5105
+
+### 1. Funcionalidade: Cadastrar Tarefa
+POST {{base_url}}/api/tarefa/cadastrar
+Content-Type: application/json
+
+{
+    "titulo": "Estudar React e .NET",
+    "descricao": "Criar a aplicação para a prova"
+}
+
+### 2. Funcionalidade: Cadastrar Outra Tarefa (Para testes de listagem)
+POST {{base_url}}/api/tarefa/cadastrar
+Content-Type: application/json
+
+{
+    "titulo": "Enviar projeto no GitHub",
+    "descricao": "Não esquecer de deletar node_modules"
+}
+
+### 3. Funcionalidade: Listar Todas as Tarefas
+GET {{base_url}}/api/tarefa/listar
+
+### 4. Funcionalidade: Alterar Status (ID 1 - De 'Não iniciada' para 'Em andamento')
+PATCH {{base_url}}/api/tarefa/alterar/1
+
+### 5. Funcionalidade: Alterar Status Novamente (ID 1 - De 'Em andamento' para 'Concluída')
+PATCH {{base_url}}/api/tarefa/alterar/1
+
+### 6. Funcionalidade: Listar Tarefas Não Concluídas
+# Deve mostrar apenas as que estão "Não iniciada" ou "Em andamento"
+GET {{base_url}}/api/tarefa/naoconcluidas
+
+### 7. Funcionalidade: Listar Tarefas Concluídas
+# Deve mostrar apenas as que estão "Concluída"
+GET {{base_url}}/api/tarefa/concluidas
